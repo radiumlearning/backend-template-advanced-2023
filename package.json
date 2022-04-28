@@ -4,7 +4,8 @@
   "description": "app_name is a system that provides Human Resources services to companies.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/index"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/BaSP-m2022/Backend-template/issues"
   },
-  "homepage": "https://github.com/BaSP-m2022/Backend-template#readme"
+  "homepage": "https://github.com/BaSP-m2022/Backend-template#readme",
+  "dependencies": {
+    "express": "^4.18.0",
+    "nodemon": "^2.0.15"
+  }
 }
