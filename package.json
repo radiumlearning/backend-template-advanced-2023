@@ -21,6 +21,9 @@
     "url": "https://github.com/BaSP-m2022/Backend-template/issues"
   },
   "homepage": "https://github.com/BaSP-m2022/Backend-template#readme",
+  "engines": {
+    "node": "14.x"
+  },
   "dependencies": {
     "express": "^4.18.0",
     "nodemon": "^2.0.15"
