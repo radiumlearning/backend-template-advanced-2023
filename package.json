@@ -8,7 +8,8 @@
     "start": "nodemon --exec npm run babel-node -- src/index.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "babel-node": "babel-node --presets='@babel/preset-env' --ignore='foo|bar|baz'"
+    "babel-node": "babel-node --presets='@babel/preset-env' --ignore='foo|bar|baz'",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -30,6 +31,7 @@
     "@babel/preset-env": "^7.16.11",
     "eslint": "^8.14.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.26.0"
+    "eslint-plugin-import": "^2.26.0",
+    "husky": "^7.0.4"
   }
 }
