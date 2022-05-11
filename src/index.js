@@ -2,6 +2,7 @@
 import express from 'express';
 
 import employees from './resources/employees';
+import employeesValidation from './validations/employees';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -13,7 +14,7 @@ app.get('/', async (req, res) => {
 });
 
 app.get('/employees', employees.listEmployees);
-app.post('/employees/create', employees.createEmployee);
+app.post('/employees/create', employeesValidation.creation, employees.createEmployee);
 
 app.listen(port, () => {
   // eslint-disable-next-line no-console
