@@ -5,7 +5,14 @@ const creation = (req, res, next) => {
   const employee = Joi.object({
     first_name: Joi.string().min(1).max(50).required(),
     last_name: Joi.string().min(1).max(50).required(),
+    password: Joi.string().min(1).max(50).required(),
+    address: Joi.string().min(1).max(50).required(),
+    zip: Joi.number().integer().min(1000).max(9000)
+      .required(),
     email: Joi.string().email({ minDomainSegments: 2 }),
+    city: Joi.string().min(1).max(50).required(),
+    dni: Joi.number().integer().min(1000000).max(99999999)
+      .required(),
     gender: Joi.string().valid('male', 'female'),
   });
 

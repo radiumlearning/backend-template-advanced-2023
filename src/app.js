@@ -1,7 +1,7 @@
 // use "import" to import libraries
 import express from 'express';
 
-import employees from './resources/employees';
+import employees from './controllers/employees';
 import employeesValidation from './validations/employees';
 
 const app = express();
