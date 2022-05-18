@@ -14,5 +14,6 @@ app.get('/', (req, res) => {
 
 app.get('/employees', employees.listEmployees);
 app.post('/employees/create', employeesValidation.creation, employees.createEmployee);
+app.delete('/employees/:id', employees.deleteEmployee);
 
 export default app;

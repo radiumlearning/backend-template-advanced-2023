@@ -55,7 +55,32 @@ const createEmployee = async (req, res) => {
   }
 };
 
+const deleteEmployee = async (req, res) => {
+  try {
+    const result = await Employees.deleteOne({ _id: req.params.id });
+    if (!result.deletedCount) {
+      return res.status(404).json({
+        message: 'Employee does not exists',
+        data: undefined,
+        error: true,
+      });
+    }
+    return res.status(200).json({
+      message: 'Employee deleted',
+      data: result,
+      error: false,
+    });
+  } catch (error) {
+    return res.status(400).json({
+      message: error.toString(),
+      data: undefined,
+      error: true,
+    });
+  }
+};
+
 export default {
   createEmployee,
   listEmployees,
+  deleteEmployee,
 };
