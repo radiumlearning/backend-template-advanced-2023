@@ -1,6 +1,11 @@
+import request from 'supertest';
+import Employees from '../models/Employees';
+import employeesSeed from '../seed/employees';
 import app from '../app';
 
-const request = require('supertest');
+beforeAll(async () => {
+  await Employees.collection.insertMany(employeesSeed);
+});
 
 describe('Test Employees routes', () => {
   test('It should create a new employee', async () => {
