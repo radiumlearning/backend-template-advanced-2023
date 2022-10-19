@@ -29,6 +29,15 @@ describe('Test Employees routes', () => {
     expect(response.body.error).toBe(false);
   });
 
+  test('It should get a employee', async () => {
+    // eslint-disable-next-line no-underscore-dangle
+    const response = await request(app).get(`/employees?_id=${employeesSeed[0]._id}`);
+    expect(response.statusCode).toBe(200);
+    expect(response.body.error).toBe(false);
+    // eslint-disable-next-line no-underscore-dangle
+    expect(response.body.data[0]._id).toBe(employeesSeed[0]._id.toString());
+  });
+
   test('It should delete a employee', async () => {
     // eslint-disable-next-line no-underscore-dangle
     const response = await request(app).delete(`/employees/${employeesSeed[0]._id}`);

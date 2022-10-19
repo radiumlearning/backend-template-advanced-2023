@@ -1,15 +1,11 @@
 import Employees from '../models/Employees';
+import APIError from '../helpers/reponse-format';
 
 const listEmployees = async (req, res) => {
   try {
     const result = await Employees.find(req.query);
-
     if (!result.length) {
-      return res.status(404).json({
-        message: 'There are not employees',
-        data: undefined,
-        error: true,
-      });
+      throw new APIError('There are not employees', 404);
     }
     return res.status(200).json({
       message: 'List of Employees',
@@ -17,8 +13,8 @@ const listEmployees = async (req, res) => {
       error: false,
     });
   } catch (error) {
-    return res.status(400).json({
-      message: error.toString(),
+    return res.status(error.status || 500).json({
+      message: error.message || error,
       data: undefined,
       error: true,
     });
@@ -47,8 +43,8 @@ const createEmployee = async (req, res) => {
       error: false,
     });
   } catch (error) {
-    return res.status(400).json({
-      message: error.toString(),
+    return res.status(error.status || 500).json({
+      message: error.message || error,
       data: undefined,
       error: true,
     });
@@ -59,11 +55,7 @@ const deleteEmployee = async (req, res) => {
   try {
     const result = await Employees.deleteOne({ _id: req.params.id });
     if (!result.deletedCount) {
-      return res.status(404).json({
-        message: 'Employee does not exists',
-        data: undefined,
-        error: true,
-      });
+      throw new APIError('Employee does not exists', 404);
     }
     return res.status(200).json({
       message: 'Employee deleted',
@@ -71,8 +63,8 @@ const deleteEmployee = async (req, res) => {
       error: false,
     });
   } catch (error) {
-    return res.status(400).json({
-      message: error.toString(),
+    return res.status(error.status || 500).json({
+      message: error.message || error,
       data: undefined,
       error: true,
     });
