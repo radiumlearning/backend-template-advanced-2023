@@ -7,24 +7,20 @@ beforeAll(async () => {
   await Employees.collection.insertMany(employeesSeed);
 });
 
-let employeeId;
-
 describe('Test Employees routes', () => {
   test('It should create a new employee', async () => {
     const response = await request(app).post('/employees/create').send({
-      first_name: 'Esteban',
-      last_name: 'Frare',
-      email: 'esteban.frare@radiumrocket.com',
+      first_name: 'Carlos',
+      last_name: 'Gardel',
+      email: 'carlos.gardel@radiumrocket.com',
       password: 'test123',
-      dni: '38240915',
-      address: 'Paraguay 2349',
-      city: 'Rosario',
+      dni: '19231992',
+      address: 'Rivoli 2349',
+      city: 'Paris',
       zip: '2000',
     });
     expect(response.statusCode).toBe(201);
     expect(response.body.error).toBe(false);
-    // eslint-disable-next-line no-underscore-dangle
-    employeeId = response.body.data._id;
   });
 
   test('It should get the employee list', async () => {
@@ -34,7 +30,8 @@ describe('Test Employees routes', () => {
   });
 
   test('It should delete a employee', async () => {
-    const response = await request(app).delete(`/employees/${employeeId}`);
+    // eslint-disable-next-line no-underscore-dangle
+    const response = await request(app).delete(`/employees/${employeesSeed[0]._id}`);
     expect(response.statusCode).toBe(200);
     expect(response.body.error).toBe(false);
   });
