@@ -1,11 +1,13 @@
 // use "import" to import libraries
 import express from 'express';
+import cors from 'cors';
 
 import employees from './controllers/employees';
 import employeesValidation from './validations/employees';
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
 app.get('/', (req, res) => {
