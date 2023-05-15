@@ -1,10 +1,11 @@
 import mongoose from 'mongoose';
 import app from './app';
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 
 mongoose.connect(
-  'mongodb+srv://BaSD:BaSD2021@cluster0.5vk6q.mongodb.net/backend-template-basp?retryWrites=true&w=majority',
+  process.env.DATABASE_URL,
+  { maxPoolSize: process.env.MONGO_POOLSIZE || 1 },
   (error) => {
     if (error) {
       // eslint-disable-next-line no-console
